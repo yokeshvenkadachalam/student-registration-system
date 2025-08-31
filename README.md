@@ -12,3 +12,25 @@ Backend: FastAPI (Python)
 Database: MySQL
 📌 Use Case
 This project demonstrates the fundamentals of modern full-stack application development, user authentication workflows, and integration between frontend, backend, and database systems. It is an excellent reference for students and developers looking to understand secure form handling and email verification processes in web applications.
+
+
+[ User (Student) ]
+         │
+         ▼
+[ Frontend (Angular) ]
+         │
+         ▼
+[ Backend (FastAPI - Python) ]
+     ┌───────────────┴───────────────┐
+     ▼                               ▼
+[ MySQL Database ]         [ Email Service (SMTP) ]
+                                   │
+                                   ▼
+                          [ Verification Link Sent ]
+                                   │
+                                   ▼
+                          [ User Clicks Link ]
+                                   │
+                                   ▼
+                        [ Backend verifies token → Updates DB ]
+
