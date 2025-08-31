@@ -1,0 +1,70 @@
+<div class="page">
+  <div class="card">
+
+    <h1 *ngIf="!token">Student Registration</h1>
+    <h1 *ngIf="token">Email Verification</h1>
+    <div *ngIf="token">
+      <div *ngIf="verifying">Verifying your email, please wait...</div>
+      <div *ngIf="!verifying && verifyMessage.includes('success')" class="alert success">
+        {{ verifyMessage }}
+      </div>
+      <div *ngIf="!verifying && !verifyMessage.includes('success')" class="alert error">
+        {{ verifyMessage }}
+      </div>
+    </div>
+    <div *ngIf="!token">
+      <div *ngIf="showSuccess" class="alert success">Student added successfully! Check your email to verify.</div>
+      <div *ngIf="errorMsg" class="alert error">{{ errorMsg }}</div>
+
+      <form [formGroup]="studentForm" (ngSubmit)="submitForm()">
+        <div class="grid">
+          <label>
+            First Name
+            <input type="text" formControlName="first_name" />
+          </label>
+          <label>
+            Last Name
+            <input type="text" formControlName="last_name" />
+          </label>
+          <label>
+            Email
+            <input type="email" formControlName="email" />
+          </label>
+          <label>
+            Mobile
+            <input type="text" formControlName="mobile" />
+          </label>
+          <label>
+            Gender
+            <input type="text" formControlName="gender" />
+          </label>
+          <label>
+            Current Location
+            <input type="text" formControlName="current_location" />
+          </label>
+          <label class="col-span-2">
+            Permanent Address
+            <input type="text" formControlName="permanent_address" />
+          </label>
+          <label>
+            College Name
+            <input type="text" formControlName="college_name" />
+          </label>
+          <label>
+            School Name
+            <input type="text" formControlName="school_name" />
+          </label>
+          <label>
+            Photo
+            <input type="file" (change)="onFileChange($event, 'photo')" />
+          </label>
+          <label>
+            Resume
+            <input type="file" (change)="onFileChange($event, 'resume')" />
+          </label>
+        </div>
+        <button class="btn" type="submit">Submit</button>
+      </form>
+    </div>
+  </div>
+</div>
